@@ -1,5 +1,5 @@
 #!/data/data/com.termux/files/usr/bin/bash
-# KOJENG v3.1 - UTF-8 crash fixed, ASCII safe, terminal stable
+# KOJENG v3.2 - 3D logo, UTF-8 safe, terminal stable
 
 [ -z "$BASH_VERSION" ] && { echo "Gunakan: bash kojeng.sh"; exit 1; }
 
@@ -77,16 +77,24 @@ back_anim() {
     cls
 }
 
+# ============ LOGO 3D ============
+logo() {
+    echo -e "${G}"
+    cat <<'EOF'
+██╗  ██╗ ██████╗      ██╗███████╗███╗   ██╗ ██████╗ 
+██║ ██╔╝██╔═══██╗     ██║██╔════╝████╗  ██║██╔════╝ 
+█████╔╝ ██║   ██║     ██║█████╗  ██╔██╗ ██║██║  ███╗
+██╔═██╗ ██║   ██║██   ██║██╔══╝  ██║╚██╗██║██║   ██║
+██║  ██╗╚██████╔╝╚█████╔╝███████╗██║ ╚████║╚██████╔╝
+╚═╝  ╚═╝ ╚═════╝  ╚════╝ ╚══════╝╚═╝  ╚═══╝ ╚═════╝ 
+EOF
+    echo -e "${N}"
+}
+
 banner() {
     cls
-    echo -e "${G}"
-    echo "  ##   ##  ####    ##  ###### #####  ##  ##  ####  "
-    echo "  ##  ##  ##  ##   ##  ##     ##  ## ### ## ##  ## "
-    echo "  ####   ##  ##   ##  #####  ##  ## ## ### ##     "
-    echo "  ## ##  ##  ##  ##   ##     #####  ##  ## ## ### "
-    echo "  ##  ##  ##  ## ##    ##     ## ##  ##  ## ##  ## "
-    echo "  ##   ##  ####  ##    ###### ##  ## ##  ##  ####  "
-    echo -e "${N}${C}      >>> KOJENG v3.1 - Stable <<<${N}\n"
+    logo
+    echo -e "${C}          >>> KOJENG v3.2 - Stable <<<${N}\n"
 }
 
 sub_header() {
@@ -111,7 +119,7 @@ anim_matrix_intro() {
     local clen=${#chars}
     cls
     echo -e "${G}+--------------------------------------+${N}"
-    echo -e "${G}|${C}   KOJENG SECURE BOOT SEQUENCE v3.1  ${G}|${N}"
+    echo -e "${G}|${C}   KOJENG SECURE BOOT SEQUENCE v3.2  ${G}|${N}"
     echo -e "${G}+--------------------------------------+${N}"
     echo
     local t i idx line
@@ -213,15 +221,9 @@ boot() {
     anim_loading_bar
     anim_access
     cls
-    echo -e "${G}"
-    echo "  ##   ##  ####    ##  ###### #####  ##  ##  ####  "
-    echo "  ##  ##  ##  ##   ##  ##     ##  ## ### ## ##  ## "
-    echo "  ####   ##  ##   ##  #####  ##  ## ## ### ##     "
-    echo "  ## ##  ##  ##  ##   ##     #####  ##  ## ## ### "
-    echo "  ##  ##  ##  ## ##    ##     ## ##  ##  ## ##  ## "
-    echo "  ##   ##  ####  ##    ###### ##  ## ##  ##  ####  "
-    echo -e "${N}${C}      >>> CYBER JACKING FRAMEWORK <<<${N}"
-    echo -e "${M}        * Powered by Kojeng Team *${N}\n"
+    logo
+    echo -e "${C}        >>> CYBER JACKING FRAMEWORK <<<${N}"
+    echo -e "${M}          * Powered by Kojeng Team *${N}\n"
     echo -e "${G}[+] ${W}Sistem siap, Operator.${N}"
     sleep 0.8
     # === FIX 4: Reset terminal setelah boot ===
@@ -659,7 +661,7 @@ m_fun() {
 install_tools() {
     cls
     echo -e "${C}[*] Installing tools...${N}\n"
-    for t in nmap whois dnsutils curl wget openssl-tool traceroute git python nc netcat-openbsd unzip qrencode; do
+    for t in nmap whois dnsutils curl wget openssl-tool traceroute git python netcat-openbsd unzip qrencode; do
         printf "  %-22s" "$t"
         if pkg install "$t" -y >/dev/null 2>&1; then
             echo -e "${G}[OK]${N}"
@@ -672,7 +674,7 @@ install_tools() {
 
 # ============ MAIN MENU ============
 menu_main() {
-    echo -e "${G}+-[${W}MAIN MENU v3.1${G}]-------------+${N}"
+    echo -e "${G}+-[${W}MAIN MENU v3.2${G}]-------------+${N}"
     echo -e "${G}|${N} ${Y}[1]${N} ${C}Network Scan${N}              ${G}|${N}"
     echo -e "${G}|${N} ${Y}[2]${N} ${C}Web Recon${N}                 ${G}|${N}"
     echo -e "${G}|${N} ${Y}[3]${N} ${C}DNS Tools${N}                 ${G}|${N}"
